@@ -77,8 +77,7 @@ class PensionData():
         return self.df.loc[self.df['사업장명'].str.contains(company_name), ['사업장명', '월급여추정', '연간급여추정', '업종코드', '가입자수']]\
                   .sort_values('가입자수', ascending=False)
    
-    # 주어진 'company_name' 으로
-    # 동종업계 정보 (월급여 추정액, 연간급여추정액 ) 비교
+    # 주어진 'company_name'으로 동종업계 정보 (월급여 추정액, 연간급여추정액 ) 비교
     def compare_company(self, company_name):
         company = self.find_company(company_name)
         code = company['업종코드'].iloc[0]
@@ -145,8 +144,8 @@ if data and company_name:
         st.markdown(
             f"""
             - 업종 **평균 월급여**는 `{int(comp_output.iloc[0, 0]):,}` 원, **평균 연봉**은 `{int(comp_output.iloc[1, 0]):,}` 원 입니다.
-            - `{company_name}`는 평균 보다 `{int(diff_month):,}` 원, :red[약 {percent_value:.2f} %] `{upordown}` `{int(info['월급여추정']):,}` 원을 **월 평균 급여**를 받는 것으로 추정합니다.
-            - `{company_name}`는 평균 보다 `{int(diff_year):,}` 원 `{upordown}` `{int(info['연간급여추정']):,}` 원을 **연봉**을 받는 것으로 추정합니다.
+            - `{company_name}`는 평균보다 `{int(diff_month):,}` 원, :red[약 {percent_value:.2f} %] `{upordown}` `{int(info['월급여추정']):,}` 원을 **월 평균 급여**를 받는 것으로 추정합니다.
+            - `{company_name}`는 평균보다 `{int(diff_year):,}` 원 `{upordown}` `{int(info['연간급여추정']):,}` 원을 **연봉**을 받는 것으로 추정합니다.
             """
         )
 
